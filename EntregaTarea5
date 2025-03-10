@@ -1,0 +1,46 @@
+package Ejercicio2;
+//Importacion de clase Scanner para leer entradas por teclado.
+import java.util.Scanner;
+
+//Clase que formatea el número teléfonico introducido por teclado.
+public class NumeroTelefono {
+    //Metodo que lleva a cabo la acción del formateo.
+    public void cambiarFormato() {
+        //Configuración de entrada por teclado.
+        Scanner teclado = new Scanner(System.in);
+        String nTelefonico; //Variable que almacena el numero teléfonico.
+
+        System.out.println("Has elegido la opción: B. Formatear teléfono");
+        
+        //Bucle que asegura que el usuario ha ingresado un numero válido.
+        do {
+            System.out.println("Introduce un número telefónico de 9 dígitos: ");
+            nTelefonico = teclado.nextLine().trim();//Lee y limpia espacios en blanco.
+
+            //Elimina todos los espacios en blanco.
+            nTelefonico = nTelefonico.replaceAll("\\s", "");
+
+            System.out.println("");
+            
+            //Verifación de la cantidad de numeros necesaria (9).
+            if (nTelefonico.length() == 9) {
+                String pos1 = nTelefonico.substring(0, 2);
+                String pos2 = nTelefonico.substring(2, 5);
+                String pos3 = nTelefonico.substring(5, 7);
+                String pos4 = nTelefonico.substring(7, 9);
+                
+                //Construcción del número formateado.
+                String nFormato = "(" + pos1 + ")" + "-" + pos2 + "-" + pos3 + "-" + pos4;
+                System.out.println("Número telefónico: " + nTelefonico);
+                System.out.println("Nueva Cadena: " + nFormato);
+                System.out.println("");
+            } else {
+                //Mensaje de error si el número no tiene 9 digitos.
+                System.out.println("[!] Error: Introduce un número de 9 dígitos.");
+                System.out.println("");
+            }
+        // Condición del bucle que se repite hasta ingresar un número válido.
+        } while (nTelefonico.length() != 9); 
+
+    }
+}

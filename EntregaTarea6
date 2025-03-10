@@ -1,0 +1,78 @@
+package Ejercicios;
+//Importación de clases necesarias.
+import java.util.ArrayList;
+import java.util.Scanner;
+//Clase principal
+public class Ej_D {
+    //Método que realiza operaciones con una lista de numeros.
+    public void operacionesNumeros() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Has elegido la opción: D. Operaciones con números");
+        //Arraylist que almacena los numeros introducidos por teclado.
+        ArrayList<Integer> numeros = new ArrayList<>();
+        
+        //Variable que almacena los numeros introducidos por teclado.
+        int numero;
+
+        System.out.println("Introduce números positivos o -999 para finalizar: ");
+
+        // Bucle que lee números hasta que se ingrese -999
+        while (true) {
+            System.out.print("Introduce un número: ");
+            //Condición que verifica si la entrada es un numero entero.
+            if (teclado.hasNextInt()) {
+                //Asignacion del numero introducido por teclado a la variable numero.
+                numero = teclado.nextInt();
+                //Condicion que finaliza la entrada de datos si el numero es -999
+                if (numero == -999) {
+                    break;
+                }
+                //Si no es -999, agrega el numero a la lista.
+                numeros.add(numero);
+            } else {
+                //Muestra mensaje de error si la entrada no es un numero entero.
+                System.out.println("¡Error! Introduce un número entero válido.");
+                teclado.next(); // Limpiar entrada inválida
+            }
+        }
+
+        // Verifica si el ArrayList está vacío. ( No se introdujeron numeros)
+        if (numeros.isEmpty()) {
+            System.out.println("ERROR! Introduce un numero.");
+            //Termina el método si la lista esta vacía.
+            return;
+        }
+
+        // Declaración de variables para calcular suma, media, máximo y mínimo
+        int suma = 0;
+        //método .get valor inicial para comparar con el resto de n de la lista.
+        int maximo = numeros.get(0);
+        int minimo = numeros.get(0);
+        //Bucle for each que recorre todos los números
+        for (int num : numeros) {
+            //Variable que suma todos los numeros
+            suma += num;
+            //Actualiza el valor de maximo si el numero actual es mayor.
+            if (num > maximo) {
+                maximo = num;
+            }
+            //Actualiza el valor de minimo si el numero actual es menor.
+            if (num < minimo) {
+                minimo = num;
+            }
+        }
+        //Declaracion de variable double media y calculo de la media de los numeros.
+        //(double) castea la variable de int a double ya que el resultado de la media puede ser decimal.
+        double media = (double) suma / numeros.size();
+
+        // Mestra por pantalla los resultados.
+        System.out.println("");
+        System.out.println("Resultado de las operaciones:");
+        System.out.println("1. Suma: " + suma);
+        System.out.println("2. Media: " + media);
+        System.out.println("3. Número máximo: " + maximo);
+        System.out.println("4. Número mínimo: " + minimo);
+
+    }
+
+}
